@@ -17,7 +17,7 @@ class System:
       target_radius=0.1,  # target radius (m)
   ):
     self.radius = radius
-    self.area = math.pi * (radius ** 2) / 2
+    self.area = math.pi * (radius ** 2)
     self.Cd = Cd
     self.rho = rho
     self.g = g
@@ -44,7 +44,7 @@ class System:
     self.target_coordinate = target_coordinate
     self.target_radius = target_radius
     self.hit_target = False
-    self.hit_speed = 0
+    self.hit_speed = [0, 0, 0]
     self.hit_time = 0
 
     self.find_trajectory()

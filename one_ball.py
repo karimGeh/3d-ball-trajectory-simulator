@@ -1,3 +1,4 @@
+import math
 from lib.System import System
 import matplotlib.pyplot as plt
 import numpy as np
@@ -20,16 +21,19 @@ delta_t = 0.001
 # even if they have the same wind speed and air pressure and air density
 # if the two balls has different section or different weight
 # conclusion: the wind force should be calculated to each ball separately
-wind_force = [0.1, -0.01, 0]
+wind_force = [0, 0, 0]
 
 # ball information
-initial_position = [0, 0, 2]  # initial position of the ball (m)
-initial_velocity = [0, 50, 50]  # initial velocity of the moving body (m/s)
-mass = 0.01  # kg
-radius = 10 * (10 ** -2)  # cm -> m  (100 cm = 1 m)
+initial_position = [0, 0, 0]  # initial position of the ball (m)
+# initial velocity of the moving body (m/s)
+initial_velocity = [0, 20, 45]
+
+mass = 0.3  # g --> kg
+radius = 0.04  # cm -> m  (100 cm = 1 m)
+# radius = (0.2 / math.pi)**0.5
 
 # target information
-target_coordinate = [2, 5, 5.3]  # target coordinate (m)
+target_coordinate = [0, 5, 5]  # target coordinate (m)
 target_radius = 0.1  # target radius (m)
 
 # initializing the system (the ball)
@@ -74,14 +78,15 @@ trajectory = trajectory[::step]
 # hit the target
 # we can use the following code to check if the ball hit the target
 hit_target = ball.hit_target  # boolean
-# speed of the ball at the time of hitting the target
-hit_speed = [round(i, 3) for i in ball.hit_speed]
-hit_time = ball.hit_time  # time in air at the time of hitting the target
 
-
+print(f"area : {ball.area}m2")
 print(f"time_in_air: {ball.time_in_air:.3f}s")
+print(f"last_position: {ball.final_position}s")
 print("hit_target:", hit_target)
 if hit_target:
+  # speed of the ball at the time of hitting the target
+  hit_speed = [round(i, 3) for i in ball.hit_speed]
+  hit_time = ball.hit_time  # time in air at the time of hitting the target
   print(f"hit_speed: {hit_speed}")
   print(f"hit_time: {hit_time:.3f}s")
 
