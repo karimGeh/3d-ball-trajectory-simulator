@@ -74,13 +74,16 @@ trajectory = trajectory[::step]
 # hit the target
 # we can use the following code to check if the ball hit the target
 hit_target = ball.hit_target  # boolean
-hit_speed = ball.hit_speed  # speed of the ball at the time of hitting the target
+# speed of the ball at the time of hitting the target
+hit_speed = [round(i, 3) for i in ball.hit_speed]
 hit_time = ball.hit_time  # time in air at the time of hitting the target
 
+
+print(f"time_in_air: {ball.time_in_air:.3f}s")
 print("hit_target:", hit_target)
 if hit_target:
-  print("hit_speed:", hit_speed)
-  print("hit_time:", hit_time)
+  print(f"hit_speed: {hit_speed}")
+  print(f"hit_time: {hit_time:.3f}s")
 
 
 # plot the trajectory of the ball in the 3d space
