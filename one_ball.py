@@ -37,6 +37,9 @@ ball = System(
     # simulation parameters
     delta_t=delta_t,
     wind_force=wind_force,
+    Cd=0.47,  # drag coefficient
+    rho=1.225,  # density of the fluid (kg/m3)
+    g=9.81,  # gravity
 
     # ball information
     initial_velocity=initial_velocity,
